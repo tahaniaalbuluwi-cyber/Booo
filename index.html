@@ -3,631 +3,198 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تقرير #عوو — تحليل الحضور الرقمي</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>تقرير #عوو — الحضور الرقمي</title>
 <style>
-:root {
-  --gold: #C9A84C;
-  --gold-bg: rgba(201,168,76,0.12);
-  --teal: #1D9E75;
-  --teal-bg: rgba(29,158,117,0.12);
-  --coral: #D85A30;
-  --coral-bg: rgba(216,90,48,0.12);
-  --purple: #7B5EA7;
-  --purple-bg: rgba(123,94,167,0.12);
-  --blue: #1A9AF4;
-  --bg: #0C0C14;
-  --bg2: #13131E;
-  --bg3: #1A1A28;
-  --bg4: #222234;
-  --text: #EEEEF5;
-  --text2: #9090AA;
-  --text3: #55556A;
-  --border: rgba(255,255,255,0.08);
-  --border2: rgba(255,255,255,0.14);
-  --radius: 12px;
-  --radius-sm: 8px;
-}
-
-- { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-font-family: ‘IBM Plex Sans Arabic’, sans-serif;
-background: var(–bg);
-color: var(–text);
-direction: rtl;
-min-height: 100vh;
-}
-
-/* ── HEADER ── */
-.header {
-background: var(–bg2);
-border-bottom: 1px solid var(–border);
-padding: 0 32px;
-position: sticky;
-top: 0;
-z-index: 100;
-backdrop-filter: blur(12px);
-}
-
-.header-inner {
-max-width: 1100px;
-margin: 0 auto;
-display: flex;
-align-items: center;
-justify-content: space-between;
-height: 60px;
-}
-
-.header-title {
-display: flex;
-align-items: center;
-gap: 12px;
-}
-
-.header-logo {
-font-size: 22px;
-font-weight: 600;
-color: var(–gold);
-letter-spacing: 2px;
-}
-
-.header-sub {
-font-size: 12px;
-color: var(–text2);
-border-right: 1px solid var(–border);
-padding-right: 12px;
-}
-
-.header-badge {
-font-size: 11px;
-background: var(–gold-bg);
-color: var(–gold);
-padding: 4px 10px;
-border-radius: 20px;
-border: 1px solid rgba(201,168,76,0.2);
-}
-
-/* ── TABS NAV ── */
-.tabs-nav {
-background: var(–bg2);
-border-bottom: 1px solid var(–border);
-padding: 0 32px;
-}
-
-.tabs-nav-inner {
-max-width: 1100px;
-margin: 0 auto;
-display: flex;
-gap: 0;
-overflow-x: auto;
-scrollbar-width: none;
-}
-.tabs-nav-inner::-webkit-scrollbar { display: none; }
-
-.tab-btn {
-padding: 14px 20px;
-font-family: inherit;
-font-size: 13px;
-font-weight: 400;
-color: var(–text2);
-background: none;
-border: none;
-border-bottom: 2px solid transparent;
-cursor: pointer;
-white-space: nowrap;
-transition: all .2s;
-display: flex;
-align-items: center;
-gap: 7px;
-}
-
-.tab-btn:hover { color: var(–text); }
-
-.tab-btn.active {
-color: var(–gold);
-border-bottom-color: var(–gold);
-font-weight: 500;
-}
-
-.tab-icon {
-width: 16px;
-height: 16px;
-border-radius: 4px;
-display: inline-flex;
-align-items: center;
-justify-content: center;
-font-size: 10px;
-}
-
-/* ── MAIN ── */
-.main {
-max-width: 1100px;
-margin: 0 auto;
-padding: 32px 32px 80px;
-}
-
-/* ── TAB PANELS ── */
-.tab-panel { display: none; animation: fadeIn .3s ease; }
-.tab-panel.active { display: block; }
-
-@keyframes fadeIn {
-from { opacity: 0; transform: translateY(8px); }
-to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ── COVER PANEL ── */
-.cover-panel {
-background: linear-gradient(135deg, var(–bg2) 0%, #0f0f1e 100%);
-border: 1px solid var(–border);
-border-radius: var(–radius);
-padding: 56px 48px;
-margin-bottom: 24px;
-position: relative;
-overflow: hidden;
-}
-
-.cover-panel::before {
-content: ‘عوو’;
-position: absolute;
-left: -20px; top: -40px;
-font-size: 280px;
-font-weight: 600;
-color: rgba(201,168,76,0.04);
-line-height: 1;
-pointer-events: none;
-}
-
-.cover-gold-line {
-width: 48px; height: 3px;
-background: var(–gold);
-border-radius: 2px;
-margin-bottom: 20px;
-}
-
-.cover-eyebrow { font-size: 11px; letter-spacing: .18em; color: var(–gold); margin-bottom: 12px; }
-.cover-title   { font-size: 80px; font-weight: 600; color: var(–gold); line-height: .9; letter-spacing: 4px; margin-bottom: 20px; }
-.cover-desc    { font-size: 18px; font-weight: 300; color: var(–text); margin-bottom: 28px; }
-.cover-metas   { display: flex; gap: 20px; flex-wrap: wrap; }
-.cover-meta    { font-size: 12px; color: var(–text2); display: flex; align-items: center; gap: 6px; }
-.cover-meta::before { content: ‘’; width: 4px; height: 4px; border-radius: 50%; background: var(–gold); display: inline-block; }
-
-/* ── KPI GRID ── */
-.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 12px; }
-.kpi-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
-
-.kpi-card {
-background: var(–bg2);
-border: 1px solid var(–border);
-border-radius: var(–radius);
-padding: 20px 18px;
-text-align: center;
-position: relative;
-overflow: hidden;
-transition: transform .2s, border-color .2s;
-}
-.kpi-card:hover { transform: translateY(-2px); border-color: var(–border2); }
-
-.kpi-card::after {
-content: ‘’;
-position: absolute;
-top: 0; left: 0; right: 0; height: 2px;
-}
-.kpi-card.gold::after   { background: var(–gold); }
-.kpi-card.teal::after   { background: var(–teal); }
-.kpi-card.coral::after  { background: var(–coral); }
-.kpi-card.purple::after { background: var(–purple); }
-
-.kpi-val { font-size: 30px; font-weight: 600; margin-bottom: 6px; line-height: 1; }
-.kpi-val.gold   { color: var(–gold); }
-.kpi-val.teal   { color: var(–teal); }
-.kpi-val.coral  { color: var(–coral); }
-.kpi-val.purple { color: var(–purple); }
-
-.kpi-lbl { font-size: 12px; color: var(–text2); margin-bottom: 2px; }
-.kpi-sub { font-size: 10px; color: var(–text3); }
-
-/* ── GRID LAYOUTS ── */
-.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-.g2-60 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; margin-bottom: 24px; }
-
-/* ── CARDS ── */
-.card {
-background: var(–bg2);
-border: 1px solid var(–border);
-border-radius: var(–radius);
-padding: 24px;
-margin-bottom: 16px;
-}
-
-.card-title {
-font-size: 13px;
-font-weight: 500;
-color: var(–text2);
-margin-bottom: 18px;
-display: flex;
-align-items: center;
-gap: 8px;
-}
-.card-title::before {
-content: ‘’;
-width: 3px; height: 14px;
-background: var(–gold);
-border-radius: 2px;
-display: inline-block;
-}
-
-/* ── BAR ROWS ── */
-.bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-.bar-row:last-child { margin-bottom: 0; }
-.bar-lbl { font-size: 13px; color: var(–text); min-width: 88px; text-align: right; white-space: nowrap; }
-.bar-track { flex: 1; height: 8px; background: var(–bg4); border-radius: 4px; overflow: hidden; }
-.bar-fill  { height: 100%; border-radius: 4px; transition: width 1s cubic-bezier(.4,0,.2,1); }
-.bar-val   { font-size: 12px; color: var(–text2); min-width: 90px; text-align: left; }
-.bar-val b { color: var(–gold); font-weight: 500; }
-
-/* ── HASHTAG ROWS ── */
-.ht-row {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 10px 0;
-border-bottom: 1px solid var(–border);
-font-size: 13px;
-}
-.ht-row:last-child { border-bottom: none; }
-.ht-tag { color: var(–purple); font-weight: 500; }
-.ht-n   { color: var(–gold); font-weight: 600; background: var(–gold-bg); padding: 2px 10px; border-radius: 20px; font-size: 12px; }
-.ht-kw  { color: var(–text); }
-.ht-tn  { color: var(–teal); font-weight: 600; background: var(–teal-bg); padding: 2px 10px; border-radius: 20px; font-size: 12px; }
-
-/* ── SENTIMENT ── */
-.sent-row {
-display: flex;
-align-items: center;
-gap: 14px;
-padding: 14px 0;
-border-bottom: 1px solid var(–border);
-}
-.sent-row:last-child { border-bottom: none; padding-bottom: 0; }
-.sent-dot  { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.sent-name { flex: 1; font-size: 14px; font-weight: 500; }
-.sent-bar-wrap { width: 120px; }
-.sent-bar-t { height: 6px; background: var(–bg4); border-radius: 3px; overflow: hidden; }
-.sent-bar-f { height: 100%; border-radius: 3px; transition: width 1s ease; }
-.sent-pct  { font-size: 22px; font-weight: 600; min-width: 54px; text-align: left; }
-.sent-desc { font-size: 11px; color: var(–text2); margin-top: 2px; }
-
-/* ── INFLUENCER ── */
-.inf-row {
-display: flex;
-align-items: center;
-gap: 12px;
-padding: 11px 0;
-border-bottom: 1px solid var(–border);
-transition: background .15s;
-}
-.inf-row:last-child { border-bottom: none; }
-.inf-row:hover { background: rgba(255,255,255,.02); margin: 0 -12px; padding: 11px 12px; border-radius: 6px; }
-
-.inf-rank   { font-size: 12px; color: var(–text3); min-width: 20px; text-align: center; }
-.inf-av     { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; }
-.inf-info   { flex: 1; text-align: right; }
-.inf-name   { font-size: 13px; font-weight: 500; color: var(–text); }
-.inf-handle { font-size: 11px; color: var(–text2); margin-top: 1px; }
-.inf-bar-t  { width: 90px; height: 5px; background: var(–bg4); border-radius: 3px; overflow: hidden; }
-.inf-bar-f  { height: 100%; border-radius: 3px; }
-.inf-pct    { font-size: 13px; font-weight: 600; min-width: 48px; text-align: left; }
-
-/* ── QUOTE ── */
-.quote-box {
-border-right: 3px solid var(–teal);
-background: rgba(29,158,117,0.07);
-border-radius: 0 var(–radius-sm) var(–radius-sm) 0;
-padding: 20px 22px 20px 26px;
-margin-bottom: 20px;
-font-size: 15px;
-font-style: italic;
-line-height: 1.8;
-color: var(–text);
-}
-.quote-box strong { color: var(–teal); font-style: normal; }
-.quote-meta { font-size: 11px; color: var(–text3); font-style: normal; margin-top: 8px; }
-
-/* ── STAT CELLS ── */
-.stat-grid  { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 10px; }
-.stat-cell  { background: var(–bg3); border-radius: var(–radius-sm); padding: 14px 10px; text-align: center; }
-.stat-n { font-size: 20px; font-weight: 600; color: var(–gold); margin-bottom: 4px; }
-.stat-l { font-size: 11px; color: var(–text2); }
-
-/* ── COUNTRY ── */
-.co-row { display: flex; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(–border); }
-.co-row:last-child { border-bottom: none; }
-.co-flag { font-size: 16px; }
-.co-name { flex: 1; font-size: 13px; color: var(–text); text-align: right; }
-.co-bar-t { width: 100px; height: 5px; background: var(–bg4); border-radius: 3px; overflow: hidden; }
-.co-bar-f { height: 100%; border-radius: 3px; background: var(–gold); transition: width 1s ease; }
-.co-val { font-size: 12px; color: var(–text2); min-width: 28px; text-align: left; }
-
-/* ── TAGS ── */
-.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-.tag-pill { padding: 5px 13px; border-radius: 20px; font-size: 12px; border: 1px solid transparent; }
-
-/* ── REC CARDS ── */
-.rec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
-.rec-card {
-background: var(–bg2);
-border: 1px solid var(–border);
-border-radius: var(–radius);
-padding: 22px 22px 22px 18px;
-position: relative;
-overflow: hidden;
-transition: transform .2s, border-color .2s;
-}
-.rec-card:hover { transform: translateY(-2px); border-color: var(–border2); }
-.rec-accent { position: absolute; right: 0; top: 0; bottom: 0; width: 3px; }
-.rec-num { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
-.rec-title { font-size: 14px; font-weight: 500; color: var(–text); margin-bottom: 8px; }
-.rec-body  { font-size: 12px; color: var(–text2); line-height: 1.7; }
-
-/* ── CHART SVG ── */
-.chart-wrap { position: relative; height: 160px; margin-bottom: 12px; }
-.chart-wrap svg { width: 100%; height: 100%; }
-
-/* ── NOTE ── */
-.note { background: var(–bg3); border-radius: var(–radius-sm); padding: 12px 16px; font-size: 12px; color: var(–text2); line-height: 1.65; }
-
-/* ── CLOSING ── */
-.closing {
-text-align: center;
-padding: 60px 24px;
-background: var(–bg2);
-border: 1px solid var(–border);
-border-radius: var(–radius);
-margin-top: 32px;
-position: relative;
-overflow: hidden;
-}
-.closing::before {
-content: ‘’;
-position: absolute;
-top: 0; left: 50%; transform: translateX(-50%);
-width: 80px; height: 2px;
-background: linear-gradient(90deg, transparent, var(–gold), transparent);
-}
-.closing-n { font-size: 88px; font-weight: 600; color: var(–gold); line-height: 1; margin-bottom: 14px; }
-.closing-s { font-size: 18px; color: var(–text); margin-bottom: 8px; }
-.closing-d { font-size: 13px; color: var(–text2); margin-bottom: 24px; line-height: 1.7; }
-.closing-t { font-size: 28px; font-weight: 500; color: var(–gold); letter-spacing: 5px; }
-
-/* ── SECTION TITLE ── */
-.section-title {
-font-size: 11px;
-font-weight: 500;
-letter-spacing: .14em;
-text-transform: uppercase;
-color: var(–text3);
-margin-bottom: 20px;
-display: flex;
-align-items: center;
-gap: 10px;
-}
-.section-title::before {
-content: ‘’;
-width: 20px; height: 1px;
-background: var(–gold);
-display: inline-block;
-}
-
-/* ── PILL ── */
-.pill { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 500; }
-.pill-gold   { background: var(–gold-bg);   color: var(–gold);   border: 1px solid rgba(201,168,76,.2); }
-.pill-teal   { background: var(–teal-bg);   color: var(–teal);   border: 1px solid rgba(29,158,117,.2); }
-.pill-coral  { background: var(–coral-bg);  color: var(–coral);  border: 1px solid rgba(216,90,48,.2); }
-.pill-purple { background: var(–purple-bg); color: var(–purple); border: 1px solid rgba(123,94,167,.2); }
-
-/* ── PROGRESS RING ── */
-.ring-wrap { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
-.ring-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.ring-label { font-size: 11px; color: var(–text2); }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 700px) {
-.kpi-grid { grid-template-columns: repeat(2, 1fr); }
-.kpi-grid-3 { grid-template-columns: repeat(2, 1fr); }
-.g2, .g2-60, .rec-grid { grid-template-columns: 1fr; }
-.stat-grid { grid-template-columns: repeat(2, 1fr); }
-.main { padding: 20px 16px 60px; }
-.cover-panel { padding: 36px 24px; }
-.cover-title { font-size: 52px; }
-}
-
-/* ── COUNTER ANIMATION ── */
-.count-up { display: inline-block; }
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{--gold:#C9A84C;--gold-bg:rgba(201,168,76,0.12);--teal:#1D9E75;--teal-bg:rgba(29,158,117,0.12);--coral:#D85A30;--coral-bg:rgba(216,90,48,0.12);--purple:#7B5EA7;--purple-bg:rgba(123,94,167,0.12);--bg:#0C0C14;--bg2:#13131E;--bg3:#1A1A28;--bg4:#222234;--text:#EEEEF5;--text2:#9090AA;--text3:#55556A;--border:rgba(255,255,255,0.08);--r:12px}
+body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Arial,sans-serif;min-height:100vh;padding-bottom:80px}
+nav{background:rgba(12,12,20,0.97);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border)}
+.nav-inner{max-width:600px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:50px}
+.nav-logo{font-size:20px;font-weight:700;color:var(--gold);letter-spacing:2px}
+.nav-badge{font-size:10px;background:var(--gold-bg);color:var(--gold);padding:3px 10px;border-radius:20px;border:1px solid rgba(201,168,76,0.2)}
+.hero{background:linear-gradient(150deg,var(--bg2),#0f0f1e);padding:28px 16px 20px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.hero::before{content:'عوو';position:absolute;left:-10px;top:-20px;font-size:160px;font-weight:700;color:rgba(201,168,76,0.04);line-height:1;pointer-events:none}
+.hero-eye{font-size:10px;letter-spacing:.15em;color:var(--gold);margin-bottom:8px}
+.hero-title{font-size:52px;font-weight:700;color:var(--gold);line-height:1;letter-spacing:3px;margin-bottom:10px}
+.hero-desc{font-size:13px;color:var(--text);margin-bottom:14px;line-height:1.6}
+.hero-metas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-meta{font-size:11px;color:var(--text2);display:flex;align-items:center;gap:5px}
+.hero-meta::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--gold);display:inline-block}
+.kpi-scroll{display:flex;gap:10px;overflow-x:auto;padding:14px 16px;scrollbar-width:none;scroll-snap-type:x mandatory}
+.kpi-scroll::-webkit-scrollbar{display:none}
+.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px;min-width:115px;flex-shrink:0;scroll-snap-align:start;position:relative;overflow:hidden;text-align:center}
+.kpi::after{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.kpi.gold::after{background:var(--gold)}.kpi.teal::after{background:var(--teal)}.kpi.coral::after{background:var(--coral)}.kpi.purple::after{background:var(--purple)}
+.kpi-v{font-size:20px;font-weight:700;line-height:1;margin-bottom:5px}
+.kpi-v.gold{color:var(--gold)}.kpi-v.teal{color:var(--teal)}.kpi-v.coral{color:var(--coral)}.kpi-v.purple{color:var(--purple)}
+.kpi-l{font-size:11px;color:var(--text2)}.kpi-s{font-size:9px;color:var(--text3);margin-top:2px}
+.main{max-width:600px;margin:0 auto;padding:14px 14px 0}
+.sec{display:none}.sec.active{display:block;animation:fi .25s ease}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:12px}
+.card-title{font-size:12px;font-weight:600;color:var(--text2);margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.card-title::before{content:'';width:3px;height:12px;background:var(--gold);border-radius:2px;display:inline-block;flex-shrink:0}
+.bm{margin-bottom:9px}
+.bm-top{display:flex;justify-content:space-between;font-size:11px;color:var(--text2);margin-bottom:4px}
+.bm-top b{color:var(--gold)}
+.bm-track{background:var(--bg4);border-radius:4px;height:7px;overflow:hidden}
+.bm-fill{height:100%;border-radius:4px;transition:width 1s ease}
+.ht-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);font-size:12px}
+.ht-row:last-child{border-bottom:none}
+.ht-tag{color:var(--purple);font-weight:500}.ht-n{color:var(--gold);font-weight:600;background:var(--gold-bg);padding:2px 8px;border-radius:20px;font-size:11px}
+.ht-kw{color:var(--text)}.ht-tn{color:var(--teal);font-weight:600;background:var(--teal-bg);padding:2px 8px;border-radius:20px;font-size:11px}
+.sent-row{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--border)}
+.sent-row:last-child{border-bottom:none}
+.sent-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.sent-info{flex:1}.sent-name{font-size:13px;font-weight:600;margin-bottom:2px}.sent-desc{font-size:10px;color:var(--text2)}
+.sent-bar-t{width:80px;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden;flex-shrink:0}
+.sent-bar-f{height:100%;border-radius:3px;transition:width 1s ease}
+.sent-pct{font-size:18px;font-weight:700;min-width:42px;text-align:left}
+.inf-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.inf-row:last-child{border-bottom:none}
+.inf-rank{font-size:11px;color:var(--text3);min-width:18px;text-align:center}
+.inf-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.inf-info{flex:1;min-width:0}.inf-name{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.inf-handle{font-size:10px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.inf-bar-t{width:70px;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden;flex-shrink:0}
+.inf-bar-f{height:100%;border-radius:3px;transition:width 1s ease}
+.inf-pct{font-size:12px;font-weight:700;min-width:40px;text-align:left;flex-shrink:0}
+.co-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}
+.co-row:last-child{border-bottom:none}
+.co-flag{font-size:15px}.co-name{flex:1;font-size:12px}
+.co-bar-t{width:80px;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden;flex-shrink:0}
+.co-bar-f{height:100%;border-radius:3px;background:var(--gold);transition:width 1s ease}
+.co-val{font-size:12px;color:var(--text2);min-width:28px;text-align:left}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.stat-cell{background:var(--bg3);border-radius:8px;padding:12px;text-align:center}
+.stat-n{font-size:18px;font-weight:700;color:var(--gold);margin-bottom:3px}.stat-l{font-size:10px;color:var(--text2)}
+.quote-box{border-right:3px solid var(--teal);background:rgba(29,158,117,0.07);border-radius:0 8px 8px 0;padding:16px;margin-bottom:14px;font-size:13px;line-height:1.8;color:var(--text)}
+.quote-box strong{color:var(--teal)}.quote-meta{font-size:10px;color:var(--text3);margin-top:8px}
+.alert{display:flex;align-items:flex-start;gap:12px;padding:14px;border-radius:var(--r);margin-bottom:12px}
+.alert-icon{font-size:22px;flex-shrink:0}
+.alert-title{font-size:13px;font-weight:600;margin-bottom:5px}
+.alert-body{font-size:12px;line-height:1.7}
+.rec-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:12px;position:relative;overflow:hidden}
+.rec-accent{position:absolute;right:0;top:0;bottom:0;width:3px}
+.rec-num{font-size:22px;font-weight:700;margin-bottom:6px}
+.rec-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
+.rec-body{font-size:12px;color:var(--text2);line-height:1.7}
+.closing{text-align:center;padding:40px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);margin-bottom:12px}
+.closing-n{font-size:56px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:10px}
+.closing-s{font-size:15px;color:var(--text);margin-bottom:8px}
+.closing-d{font-size:12px;color:var(--text2);margin-bottom:20px;line-height:1.7}
+.closing-t{font-size:22px;font-weight:600;color:var(--gold);letter-spacing:4px}
+.note{background:var(--bg3);border-radius:8px;padding:12px;font-size:11px;color:var(--text2);line-height:1.65;margin-bottom:12px}
+.slabel{font-size:10px;font-weight:600;letter-spacing:.12em;color:var(--text3);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.slabel::before{content:'';width:16px;height:1px;background:var(--gold);display:inline-block}
+.bnav{position:fixed;bottom:0;left:0;right:0;background:rgba(12,12,20,0.97);backdrop-filter:blur(12px);border-top:1px solid var(--border);z-index:100;display:flex;justify-content:space-around;padding:8px 0 max(8px,env(safe-area-inset-bottom))}
+.bi{display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 8px;cursor:pointer;min-width:50px}
+.bi.active .bicon{background:var(--gold-bg);transform:translateY(-2px)}
+.bicon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.04);transition:all .2s}
+.blabel{font-size:9px;color:var(--text3);transition:color .2s}
+.bi.active .blabel{color:var(--gold)}
+.chart-wrap{position:relative;height:140px;margin-bottom:8px}
+.chart-wrap svg{width:100%;height:100%}
 </style>
-
 </head>
 <body>
 
-<!-- HEADER -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">عوو</div>
+    <div class="nav-badge">BrandMentions · أبريل–مايو 2026</div>
+  </div>
+</nav>
 
-<div class="header">
-  <div class="header-inner">
-    <div class="header-title">
-      <div class="header-logo">عوو</div>
-      <div class="header-sub">تقرير الحضور الرقمي</div>
-    </div>
-    <div class="header-badge">BrandMentions · أبريل–مايو 2026</div>
+<div class="hero">
+  <div class="hero-eye">تقرير تحليل الحضور الرقمي</div>
+  <div class="hero-title">عوو</div>
+  <div class="hero-desc">فيلم محمد الملا — رصد وتحليل شامل لـ 1,831 إشارة</div>
+  <div class="hero-metas">
+    <div class="hero-meta">BrandMentions</div>
+    <div class="hero-meta">أبريل–مايو 2026</div>
+    <div class="hero-meta">آخر 30 يوماً</div>
   </div>
 </div>
 
-<!-- TABS NAV -->
-
-<div class="tabs-nav">
-  <div class="tabs-nav-inner">
-    <button class="tab-btn active" onclick="switchTab('overview')">
-      <span class="tab-icon pill-gold">◆</span> نظرة عامة
-    </button>
-    <button class="tab-btn" onclick="switchTab('platforms')">
-      <span class="tab-icon pill-teal">▦</span> المنصات
-    </button>
-    <button class="tab-btn" onclick="switchTab('sentiment')">
-      <span class="tab-icon pill-purple">◉</span> المشاعر
-    </button>
-    <button class="tab-btn" onclick="switchTab('geo')">
-      <span class="tab-icon pill-coral">◈</span> الجغرافيا
-    </button>
-    <button class="tab-btn" onclick="switchTab('influencers')">
-      <span class="tab-icon pill-gold">★</span> المؤثرون
-    </button>
-    <button class="tab-btn" onclick="switchTab('turki')">
-      <span class="tab-icon pill-teal">⚡</span> تركي آل الشيخ
-    </button>
-    <button class="tab-btn" onclick="switchTab('strategy')">
-      <span class="tab-icon pill-coral">→</span> التوصيات
-    </button>
-  </div>
+<div class="kpi-scroll">
+  <div class="kpi gold"><div class="kpi-v gold">1,831</div><div class="kpi-l">إجمالي الإشارات</div><div class="kpi-s">mentions</div></div>
+  <div class="kpi teal"><div class="kpi-v teal">226.4M</div><div class="kpi-l">الوصول التراكمي</div><div class="kpi-s">reach</div></div>
+  <div class="kpi purple"><div class="kpi-v purple">2.3M</div><div class="kpi-l">التفاعلات</div><div class="kpi-s">interactions</div></div>
+  <div class="kpi coral"><div class="kpi-v coral">10/10</div><div class="kpi-l">تقييم الأداء</div><div class="kpi-s">performance</div></div>
+  <div class="kpi teal"><div class="kpi-v teal">74%</div><div class="kpi-l">إيجابي</div><div class="kpi-s">302 إشارة</div></div>
+  <div class="kpi gold"><div class="kpi-v gold">الأربعاء</div><div class="kpi-l">أفضل وقت</div><div class="kpi-s">4 مساءً</div></div>
 </div>
-
-<!-- MAIN -->
 
 <div class="main">
 
-  <!-- ══ OVERVIEW ══ -->
+<!-- نظرة عامة -->
 
-  <div id="tab-overview" class="tab-panel active">
-
-```
-<div class="cover-panel">
-  <div class="cover-eyebrow">تقرير تحليل الحضور الرقمي</div>
-  <div class="cover-title">عوو</div>
-  <div class="cover-desc">فيلم محمد الملا — رصد وتحليل شامل لـ 1,831 إشارة</div>
-  <div class="cover-metas">
-    <div class="cover-meta">المصدر: BrandMentions</div>
-    <div class="cover-meta">الفترة: أبريل–مايو 2026</div>
-    <div class="cover-meta">آخر 30 يوماً</div>
-  </div>
-</div>
-
-<div class="section-title">الأرقام الإجمالية</div>
-<div class="kpi-grid">
-  <div class="kpi-card gold">
-    <div class="kpi-val gold"><span class="count-up" data-target="1831" data-format="comma">0</span></div>
-    <div class="kpi-lbl">إجمالي الإشارات</div>
-    <div class="kpi-sub">mentions</div>
-  </div>
-  <div class="kpi-card teal">
-    <div class="kpi-val teal">226.4M</div>
-    <div class="kpi-lbl">الوصول التراكمي</div>
-    <div class="kpi-sub">reach</div>
-  </div>
-  <div class="kpi-card purple">
-    <div class="kpi-val purple">2.3M</div>
-    <div class="kpi-lbl">التفاعلات</div>
-    <div class="kpi-sub">interactions</div>
-  </div>
-  <div class="kpi-card coral">
-    <div class="kpi-val coral">10/10</div>
-    <div class="kpi-lbl">تقييم الأداء</div>
-    <div class="kpi-sub">performance score</div>
-  </div>
-</div>
-
-<div class="kpi-grid-3">
-  <div class="kpi-card teal" style="text-align:center">
-    <div class="kpi-val teal" style="font-size:22px">302 <span style="font-size:15px;color:var(--text2)">74%</span></div>
-    <div class="kpi-lbl">إشارات إيجابية</div>
-  </div>
-  <div class="kpi-card coral" style="text-align:center">
-    <div class="kpi-val coral" style="font-size:22px">104 <span style="font-size:15px;color:var(--text2)">26%</span></div>
-    <div class="kpi-lbl">إشارات سلبية</div>
-  </div>
-  <div class="kpi-card gold" style="text-align:center">
-    <div class="kpi-val gold" style="font-size:18px">الأربعاء 4م</div>
-    <div class="kpi-lbl">أفضل وقت للنشر</div>
-  </div>
-</div>
-
-<div class="section-title" style="margin-top:8px">الزخم الإعلامي</div>
-<div class="card">
-  <div class="card-title">حجم التفاعلات خلال أبريل–مايو 2026</div>
-  <div class="chart-wrap">
-    <svg viewBox="0 0 800 140" role="img" aria-label="منحنى التفاعلات">
-      <defs>
-        <linearGradient id="gfill" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#C9A84C" stop-opacity=".2"/>
-          <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
-        </linearGradient>
-      </defs>
-      <!-- Grid lines -->
-      <line x1="0" y1="35" x2="800" y2="35" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
-      <line x1="0" y1="70" x2="800" y2="70" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
-      <line x1="0" y1="105" x2="800" y2="105" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
-      <!-- Area fill -->
-      <polygon fill="url(#gfill)"
-        points="0,125 53,118 107,105 160,82 213,14 267,120 320,118 373,110 427,22 480,60 533,74 587,122 640,38 693,44 747,122 800,118 800,140 0,140"/>
-      <!-- Line -->
-      <polyline fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"
-        points="0,125 53,118 107,105 160,82 213,14 267,120 320,118 373,110 427,22 480,60 533,74 587,122 640,38 693,44 747,122 800,118"/>
-      <!-- Peak dots -->
-      <circle cx="213" cy="14" r="5" fill="#C9A84C" stroke="var(--bg)" stroke-width="2"/>
-      <circle cx="427" cy="22" r="5" fill="#1D9E75" stroke="var(--bg)" stroke-width="2"/>
-      <circle cx="640" cy="38" r="5" fill="#1D9E75" stroke="var(--bg)" stroke-width="2"/>
-      <!-- Peak lines -->
-      <line x1="213" y1="14" x2="213" y2="135" stroke="#C9A84C" stroke-width="1" stroke-dasharray="4,3" opacity=".4"/>
-      <line x1="427" y1="22" x2="427" y2="135" stroke="#1D9E75" stroke-width="1" stroke-dasharray="4,3" opacity=".4"/>
-      <line x1="640" y1="38" x2="640" y2="135" stroke="#1D9E75" stroke-width="1" stroke-dasharray="4,3" opacity=".4"/>
-    </svg>
-  </div>
-  <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-bottom:14px;padding:0 2px">
-    <span>2 أبر</span><span>8 أبر</span><span>14 أبر</span><span>20 أبر</span><span>26 أبر</span><span>2 مايو</span>
-  </div>
-  <div style="display:flex;gap:20px;flex-wrap:wrap">
-    <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2)">
-      <span style="width:12px;height:3px;background:var(--gold);display:inline-block;border-radius:2px"></span>
-      ذروة 1 — 9-10 أبريل: +620K تفاعل (انطلاق التصوير)
+<div class="sec active" id="sec-overview">
+  <div class="slabel">الزخم الإعلامي</div>
+  <div class="card">
+    <div class="card-title">حجم التفاعلات — أبريل/مايو 2026</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 400 120">
+        <defs>
+          <linearGradient id="gf" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#C9A84C" stop-opacity=".25"/>
+            <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <line x1="0" y1="30" x2="400" y2="30" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+        <line x1="0" y1="60" x2="400" y2="60" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+        <line x1="0" y1="90" x2="400" y2="90" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+        <polygon fill="url(#gf)" points="0,105 53,98 107,85 160,62 213,10 267,100 320,98 373,90 400,18 400,120 0,120"/>
+        <polyline fill="none" stroke="#C9A84C" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="0,105 53,98 107,85 160,62 213,10 267,100 320,98 373,90 400,18"/>
+        <circle cx="213" cy="10" r="4" fill="#C9A84C" stroke="#0C0C14" stroke-width="2"/>
+        <circle cx="400" cy="18" r="4" fill="#1D9E75" stroke="#0C0C14" stroke-width="2"/>
+        <line x1="213" y1="10" x2="213" y2="110" stroke="#C9A84C" stroke-width="1" stroke-dasharray="3,3" opacity=".4"/>
+        <line x1="400" y1="18" x2="400" y2="110" stroke="#1D9E75" stroke-width="1" stroke-dasharray="3,3" opacity=".4"/>
+      </svg>
     </div>
-    <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2)">
-      <span style="width:12px;height:3px;background:var(--teal);display:inline-block;border-radius:2px"></span>
-      ذروة 2 و3 — 21 و28 أبريل: تغريدات تركي + بوليفارد وورلد
+    <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--text3);margin-bottom:12px">
+      <span>2 أبر</span><span>10 أبر</span><span>18 أبر</span><span>26 أبر</span><span>2 مايو</span>
+    </div>
+    <div style="font-size:11px;color:var(--text2);line-height:1.8">
+      <span style="color:var(--gold)">●</span> ذروة 1 — 9-10 أبريل: انطلاق التصوير (+620K تفاعل)<br>
+      <span style="color:var(--teal)">●</span> ذروة 2 — 21 أبريل: تغريدات تركي آل الشيخ<br>
+      <span style="color:var(--teal)">●</span> ذروة 3 — 28 أبريل: بوليفارد وورلد
     </div>
   </div>
-</div>
-```
 
-  </div>
-
-  <!-- ══ PLATFORMS ══ -->
-
-  <div id="tab-platforms" class="tab-panel">
-    <div class="section-title">توزيع الإشارات حسب المنصة</div>
-
-```
-<div class="card">
-  <div class="card-title">حصة كل منصة من إجمالي 1,831 إشارة</div>
-  <div class="bar-row"><div class="bar-lbl">X (تويتر)</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#1A9AF4"></div></div><div class="bar-val">1,224 &nbsp;<b>66.85%</b></div></div>
-  <div class="bar-row"><div class="bar-lbl">فيسبوك</div><div class="bar-track"><div class="bar-fill" style="width:17.7%;background:#1877F2"></div></div><div class="bar-val">217 &nbsp;<b>11.85%</b></div></div>
-  <div class="bar-row"><div class="bar-lbl">إنستغرام</div><div class="bar-track"><div class="bar-fill" style="width:11.3%;background:#E1306C"></div></div><div class="bar-val">138 &nbsp;<b>7.54%</b></div></div>
-  <div class="bar-row"><div class="bar-lbl">تيك توك</div><div class="bar-track"><div class="bar-fill" style="width:8.2%;background:#69C9D0"></div></div><div class="bar-val">100 &nbsp;<b>5.46%</b></div></div>
-  <div class="bar-row"><div class="bar-lbl">يوتيوب</div><div class="bar-track"><div class="bar-fill" style="width:8.2%;background:#FF0000"></div></div><div class="bar-val">100 &nbsp;<b>5.46%</b></div></div>
-  <div class="bar-row"><div class="bar-lbl">LinkedIn</div><div class="bar-track"><div class="bar-fill" style="width:0.4%;background:#0A66C2"></div></div><div class="bar-val">5 &nbsp;<b>0.27%</b></div></div>
-  <div class="bar-row"><div class="bar-lbl">Bluesky</div><div class="bar-track"><div class="bar-fill" style="width:0.3%;background:#0085FF"></div></div><div class="bar-val">4 &nbsp;<b>0.22%</b></div></div>
-  <div class="bar-row"><div class="bar-lbl">أخبار</div><div class="bar-track"><div class="bar-fill" style="width:1.9%;background:#888"></div></div><div class="bar-val">26 &nbsp;<b>1.42%</b></div></div>
-  <div class="bar-row"><div class="bar-lbl">مواقع</div><div class="bar-track"><div class="bar-fill" style="width:1.1%;background:#aaa"></div></div><div class="bar-val">15 &nbsp;<b>0.82%</b></div></div>
-</div>
-
-<div class="card" style="background:rgba(216,90,48,0.05);border-color:rgba(216,90,48,0.2)">
-  <div style="display:flex;align-items:flex-start;gap:14px">
-    <div style="font-size:28px;color:var(--coral);font-weight:600;flex-shrink:0">!</div>
+  <div class="alert" style="background:rgba(29,158,117,0.07);border:1px solid rgba(29,158,117,0.2)">
+    <div class="alert-icon">✓</div>
     <div>
-      <div style="font-size:14px;font-weight:500;color:var(--coral);margin-bottom:6px">إنستغرام — الفرصة المهدرة</div>
-      <div style="font-size:13px;color:var(--text2);line-height:1.7">إنستغرام يمثل 7.54% فقط من الإشارات رغم كونه المنصة البصرية الأولى والأنسب لتسويق الأفلام. هذا يعني فرصة ضخمة لم تُستغل بعد في محتوى الكواليس والمخرج والكاست.</div>
+      <div class="alert-title" style="color:var(--teal)">انطباع إيجابي استثنائي قبل الإصدار</div>
+      <div class="alert-body" style="color:var(--text2)">6% سلبي فقط — رقم منخفض جداً لفيلم في مرحلة ما قبل العرض. المشاعر السائدة هي الفرح والمفاجأة.</div>
     </div>
   </div>
 </div>
 
-<div class="g2">
+<!-- المنصات -->
+
+<div class="sec" id="sec-platforms">
+  <div class="slabel">توزيع الإشارات — 1,831 إشارة</div>
+  <div class="card">
+    <div class="card-title">حصة كل منصة</div>
+    <div class="bm"><div class="bm-top"><span>X (تويتر)</span><b>1,224 — 66.85%</b></div><div class="bm-track"><div class="bm-fill" style="width:0%" data-w="100%" data-c="#1A9AF4"></div></div></div>
+    <div class="bm"><div class="bm-top"><span>فيسبوك</span><b>217 — 11.85%</b></div><div class="bm-track"><div class="bm-fill" style="width:0%" data-w="17.7%" data-c="#1877F2"></div></div></div>
+    <div class="bm"><div class="bm-top"><span>إنستغرام</span><b>138 — 7.54%</b></div><div class="bm-track"><div class="bm-fill" style="width:0%" data-w="11.3%" data-c="#E1306C"></div></div></div>
+    <div class="bm"><div class="bm-top"><span>تيك توك</span><b>100 — 5.46%</b></div><div class="bm-track"><div class="bm-fill" style="width:0%" data-w="8.2%" data-c="#69C9D0"></div></div></div>
+    <div class="bm"><div class="bm-top"><span>يوتيوب</span><b>100 — 5.46%</b></div><div class="bm-track"><div class="bm-fill" style="width:0%" data-w="8.2%" data-c="#FF0000"></div></div></div>
+    <div class="bm"><div class="bm-top"><span>أخبار ومواقع</span><b>41 — 2.24%</b></div><div class="bm-track"><div class="bm-fill" style="width:0%" data-w="3%" data-c="#888"></div></div></div>
+  </div>
+
+  <div class="alert" style="background:rgba(216,90,48,0.07);border:1px solid rgba(216,90,48,0.2)">
+    <div class="alert-icon" style="color:var(--coral)">!</div>
+    <div>
+      <div class="alert-title" style="color:var(--coral)">إنستغرام — الفرصة المهدرة</div>
+      <div class="alert-body" style="color:var(--text2)">7.54% فقط رغم كونه المنصة البصرية الأولى والأنسب لتسويق الأفلام. فرصة ضخمة لم تُستغل في محتوى الكواليس والمخرج والكاست.</div>
+    </div>
+  </div>
+
   <div class="card">
     <div class="card-title">الهاشتاقات المصاحبة</div>
     <div class="ht-row"><span class="ht-tag">#وسم_الرياض</span><span class="ht-n">139</span></div>
@@ -635,74 +202,49 @@ display: inline-block;
     <div class="ht-row"><span class="ht-tag">#riyadhseason</span><span class="ht-n">89</span></div>
     <div class="ht-row"><span class="ht-tag">#الرياض</span><span class="ht-n">49</span></div>
     <div class="ht-row"><span class="ht-tag">#السعودية</span><span class="ht-n">38</span></div>
-    <div class="ht-row"><span class="ht-tag">#oud_alraiyan</span><span class="ht-n">18</span></div>
     <div class="ht-row"><span class="ht-tag">#نوادر_العود</span><span class="ht-n">18</span></div>
-    <div class="ht-row"><span class="ht-tag">#فعاليات</span><span class="ht-n">18</span></div>
   </div>
+
   <div class="card">
     <div class="card-title">السياقات الأكثر تداولاً</div>
     <div class="ht-row"><span class="ht-kw">انطلاق تصوير</span><span class="ht-tn">72</span></div>
     <div class="ht-row"><span class="ht-kw">blvd world</span><span class="ht-tn">71</span></div>
-    <div class="ht-row"><span class="ht-kw">book now</span><span class="ht-n">68</span></div>
     <div class="ht-row"><span class="ht-kw">تصوير فيلم</span><span class="ht-tn">63</span></div>
-    <div class="ht-row"><span class="ht-kw">at blvd</span><span class="ht-n">58</span></div>
     <div class="ht-row"><span class="ht-kw">متوفر تذاكر</span><span class="ht-n">54</span></div>
-    <div class="ht-row"><span class="ht-kw">بوليفارد وورلد</span><span class="ht-n">54</span></div>
-    <div class="ht-row"><span class="ht-kw">تجربة سينمائية</span><span style="color:var(--purple);font-weight:600;background:var(--purple-bg);padding:2px 10px;border-radius:20px;font-size:12px">51</span></div>
+    <div class="ht-row"><span class="ht-kw">تجربة سينمائية</span><span class="ht-n">51</span></div>
   </div>
 </div>
-```
 
-  </div>
+<!-- المشاعر -->
 
-  <!-- ══ SENTIMENT ══ -->
-
-  <div id="tab-sentiment" class="tab-panel">
-    <div class="section-title">تحليل المشاعر والانطباعات</div>
-
-```
-<div class="g2-60">
+<div class="sec" id="sec-sentiment">
+  <div class="slabel">تحليل المشاعر</div>
   <div class="card">
     <div class="card-title">توزيع المشاعر العام</div>
     <div class="sent-row">
       <div class="sent-dot" style="background:#6B7280"></div>
-      <div style="flex:1">
-        <div class="sent-name" style="color:#9090AA">محايد</div>
-        <div class="sent-desc">معلومات وتغطية إخبارية — الأغلبية</div>
-      </div>
-      <div class="sent-bar-wrap"><div class="sent-bar-t"><div class="sent-bar-f" style="width:78%;background:#6B7280"></div></div></div>
+      <div class="sent-info"><div class="sent-name" style="color:#9090AA">محايد</div><div class="sent-desc">معلومات وتغطية إخبارية</div></div>
+      <div class="sent-bar-t"><div class="sent-bar-f" style="width:0%" data-w="78%" data-c="#6B7280"></div></div>
       <div class="sent-pct" style="color:#6B7280">78%</div>
     </div>
     <div class="sent-row">
       <div class="sent-dot" style="background:var(--teal)"></div>
-      <div style="flex:1">
-        <div class="sent-name" style="color:var(--teal)">إيجابي</div>
-        <div class="sent-desc">فرح — مفاجأة — حب — تشجيع</div>
-      </div>
-      <div class="sent-bar-wrap"><div class="sent-bar-t"><div class="sent-bar-f" style="width:16%;background:var(--teal)"></div></div></div>
+      <div class="sent-info"><div class="sent-name" style="color:var(--teal)">إيجابي</div><div class="sent-desc">فرح — مفاجأة — حب — تشجيع</div></div>
+      <div class="sent-bar-t"><div class="sent-bar-f" style="width:0%" data-w="16%" data-c="#1D9E75"></div></div>
       <div class="sent-pct" style="color:var(--teal)">16%</div>
     </div>
     <div class="sent-row">
       <div class="sent-dot" style="background:var(--coral)"></div>
-      <div style="flex:1">
-        <div class="sent-name" style="color:var(--coral)">سلبي</div>
-        <div class="sent-desc">نسبة ضئيلة — طبيعية لأي إطلاق</div>
-      </div>
-      <div class="sent-bar-wrap"><div class="sent-bar-t"><div class="sent-bar-f" style="width:6%;background:var(--coral)"></div></div></div>
+      <div class="sent-info"><div class="sent-name" style="color:var(--coral)">سلبي</div><div class="sent-desc">نسبة ضئيلة — طبيعية لأي إطلاق</div></div>
+      <div class="sent-bar-t"><div class="sent-bar-f" style="width:0%" data-w="6%" data-c="#D85A30"></div></div>
       <div class="sent-pct" style="color:var(--coral)">6%</div>
     </div>
   </div>
 
   <div class="card">
-    <div class="card-title">المشاعر الأبرز</div>
-    <div class="tags" style="margin-top:0">
-      <span class="tag-pill" style="background:rgba(212,83,126,.1);color:#D4537E;border-color:rgba(212,83,126,.2)">حب</span>
-      <span class="tag-pill" style="background:var(--teal-bg);color:var(--teal);border-color:rgba(29,158,117,.2)">فرح</span>
-      <span class="tag-pill" style="background:var(--purple-bg);color:var(--purple);border-color:rgba(123,94,167,.2)">مفاجأة</span>
-      <span class="tag-pill" style="background:rgba(255,255,255,.04);color:var(--text2);border-color:var(--border)">غضب — صفر تقريباً</span>
-    </div>
-    <div style="margin-top:20px;font-size:12px;color:var(--text2);line-height:1.85">
-      <div style="padding:6px 0;border-bottom:1px solid var(--border)">X: <span style="color:var(--teal)">الأعلى إيجابية</span></div>
+    <div class="card-title">المشاعر حسب المنصة</div>
+    <div style="font-size:12px;color:var(--text2);line-height:2">
+      <div style="padding:6px 0;border-bottom:1px solid var(--border)">X (تويتر): <span style="color:var(--teal)">الأعلى إيجابية</span></div>
       <div style="padding:6px 0;border-bottom:1px solid var(--border)">فيسبوك: <span style="color:var(--text)">محايد في الغالب</span></div>
       <div style="padding:6px 0;border-bottom:1px solid var(--border)">إنستغرام: <span style="color:var(--coral)">أعلى نسبة سلبية</span></div>
       <div style="padding:6px 0">العربية: <span style="color:var(--teal)">إيجابية واضحة</span> &nbsp;·&nbsp; الإنجليزية: <span style="color:var(--text)">محايدة</span></div>
@@ -710,262 +252,139 @@ display: inline-block;
   </div>
 </div>
 
-<div class="card" style="background:rgba(29,158,117,0.05);border-color:rgba(29,158,117,0.2)">
-  <div style="display:flex;align-items:flex-start;gap:14px">
-    <div style="font-size:28px;color:var(--teal);font-weight:600;flex-shrink:0">✓</div>
-    <div>
-      <div style="font-size:14px;font-weight:500;color:var(--teal);margin-bottom:6px">انطباع إيجابي استثنائي قبل الإصدار</div>
-      <div style="font-size:13px;color:var(--text2);line-height:1.7">6% سلبي فقط — وهو رقم منخفض جداً لفيلم في مرحلة ما قبل العرض. المشاعر السائدة هي الفرح والمفاجأة مما يعكس فضولاً حقيقياً وتشجيعاً من الجمهور والإعلام.</div>
-    </div>
-  </div>
-</div>
-```
+<!-- الجغرافيا -->
 
-  </div>
-
-  <!-- ══ GEO ══ -->
-
-  <div id="tab-geo" class="tab-panel">
-    <div class="section-title">الانتشار الجغرافي واللغوي</div>
-
-```
-<div class="g2">
+<div class="sec" id="sec-geo">
+  <div class="slabel">الانتشار الجغرافي</div>
   <div class="card">
     <div class="card-title">أبرز الدول</div>
-    <div class="co-row"><span class="co-flag">🇸🇦</span><span class="co-name">السعودية</span><div class="co-bar-t"><div class="co-bar-f" style="width:100%"></div></div><span class="co-val" style="color:var(--gold);font-weight:600">230</span></div>
-    <div class="co-row"><span class="co-flag">🇪🇬</span><span class="co-name">مصر</span><div class="co-bar-t"><div class="co-bar-f" style="width:21%;background:var(--teal)"></div></div><span class="co-val">49</span></div>
-    <div class="co-row"><span class="co-flag">🇦🇪</span><span class="co-name">الإمارات</span><div class="co-bar-t"><div class="co-bar-f" style="width:12%;background:var(--purple)"></div></div><span class="co-val">28</span></div>
-    <div class="co-row"><span class="co-flag">🇮🇶</span><span class="co-name">العراق</span><div class="co-bar-t"><div class="co-bar-f" style="width:11%;background:var(--coral)"></div></div><span class="co-val">25</span></div>
-    <div class="co-row"><span class="co-flag">🇧🇭</span><span class="co-name">البحرين</span><div class="co-bar-t"><div class="co-bar-f" style="width:3%;background:#888"></div></div><span class="co-val">7</span></div>
-    <div class="co-row"><span class="co-flag">🇰🇼</span><span class="co-name">الكويت</span><div class="co-bar-t"><div class="co-bar-f" style="width:3%;background:#888"></div></div><span class="co-val">7</span></div>
-    <div class="co-row"><span class="co-flag">🇺🇸</span><span class="co-name">الولايات المتحدة</span><div class="co-bar-t"><div class="co-bar-f" style="width:2%;background:#888"></div></div><span class="co-val">5</span></div>
-    <div class="co-row"><span class="co-flag">🇱🇧</span><span class="co-name">لبنان</span><div class="co-bar-t"><div class="co-bar-f" style="width:2%;background:#888"></div></div><span class="co-val">5</span></div>
-    <div class="co-row"><span class="co-flag">🌍</span><span class="co-name">أخرى</span><div class="co-bar-t"><div class="co-bar-f" style="width:11%;background:#555"></div></div><span class="co-val">25</span></div>
+    <div class="co-row"><span class="co-flag">🇸🇦</span><span class="co-name">السعودية</span><div class="co-bar-t"><div class="co-bar-f" style="width:0%" data-w="100%"></div></div><span class="co-val" style="color:var(--gold);font-weight:700">230</span></div>
+    <div class="co-row"><span class="co-flag">🇪🇬</span><span class="co-name">مصر</span><div class="co-bar-t"><div class="co-bar-f" style="width:0%;background:var(--teal)" data-w="21%"></div></div><span class="co-val">49</span></div>
+    <div class="co-row"><span class="co-flag">🇦🇪</span><span class="co-name">الإمارات</span><div class="co-bar-t"><div class="co-bar-f" style="width:0%;background:var(--purple)" data-w="12%"></div></div><span class="co-val">28</span></div>
+    <div class="co-row"><span class="co-flag">🇮🇶</span><span class="co-name">العراق</span><div class="co-bar-t"><div class="co-bar-f" style="width:0%;background:var(--coral)" data-w="11%"></div></div><span class="co-val">25</span></div>
+    <div class="co-row"><span class="co-flag">🇧🇭</span><span class="co-name">البحرين</span><div class="co-bar-t"><div class="co-bar-f" style="width:0%;background:#888" data-w="3%"></div></div><span class="co-val">7</span></div>
+    <div class="co-row"><span class="co-flag">🇰🇼</span><span class="co-name">الكويت</span><div class="co-bar-t"><div class="co-bar-f" style="width:0%;background:#888" data-w="3%"></div></div><span class="co-val">7</span></div>
+    <div class="co-row"><span class="co-flag">🇺🇸</span><span class="co-name">الولايات المتحدة</span><div class="co-bar-t"><div class="co-bar-f" style="width:0%;background:#888" data-w="2%"></div></div><span class="co-val">5</span></div>
   </div>
 
   <div class="card">
     <div class="card-title">توزيع اللغات</div>
-    <div class="bar-row"><div class="bar-lbl" style="min-width:70px">العربية</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--gold)"></div></div><div class="bar-val"><b>91.6%</b> &nbsp;1,668</div></div>
-    <div class="bar-row"><div class="bar-lbl" style="min-width:70px">الإنجليزية</div><div class="bar-track"><div class="bar-fill" style="width:4.2%;background:var(--teal)"></div></div><div class="bar-val"><b>3.84%</b> &nbsp;70</div></div>
-    <div class="bar-row"><div class="bar-lbl" style="min-width:70px">الفارسية</div><div class="bar-track"><div class="bar-fill" style="width:3.1%;background:var(--purple)"></div></div><div class="bar-val"><b>2.8%</b> &nbsp;51</div></div>
-    <div class="bar-row"><div class="bar-lbl" style="min-width:70px">الأردية</div><div class="bar-track"><div class="bar-fill" style="width:0.6%;background:var(--coral)"></div></div><div class="bar-val"><b>0.49%</b> &nbsp;9</div></div>
-    <div class="bar-row"><div class="bar-lbl" style="min-width:70px">أخرى</div><div class="bar-track"><div class="bar-fill" style="width:1.4%;background:#888"></div></div><div class="bar-val"><b>1.26%</b> &nbsp;23</div></div>
-
-    <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
-      <div style="font-size:12px;font-weight:500;color:var(--text2);margin-bottom:10px">ملاحظة استراتيجية</div>
-      <div style="font-size:12px;color:var(--text2);line-height:1.75">
-        91.6% من التغطية عربية — لكن مصر والإمارات والعراق تمثل فرصة توسع إعلامي حقيقية خارج السعودية قبيل الإصدار.
-      </div>
-    </div>
-  </div>
-</div>
-```
-
-  </div>
-
-  <!-- ══ INFLUENCERS ══ -->
-
-  <div id="tab-influencers" class="tab-panel">
-    <div class="section-title">أبرز المؤثرين بحصة الصوت</div>
-
-```
-<div class="card">
-  <div class="inf-row">
-    <div class="inf-rank">1</div>
-    <div class="inf-av" style="background:var(--gold-bg);color:var(--gold)">M</div>
-    <div class="inf-info"><div class="inf-name">MBC1</div><div class="inf-handle">@mbc1tv · X + فيسبوك</div></div>
-    <div class="inf-bar-t"><div class="inf-bar-f" style="width:100%;background:var(--gold)"></div></div>
-    <div class="inf-pct" style="color:var(--gold)">13.78%</div>
-  </div>
-  <div class="inf-row">
-    <div class="inf-rank">2</div>
-    <div class="inf-av" style="background:var(--teal-bg);color:var(--teal)">ت</div>
-    <div class="inf-info"><div class="inf-name">تركي آل الشيخ</div><div class="inf-handle">@turki / @Turki_alalshikh · X + فيسبوك</div></div>
-    <div class="inf-bar-t"><div class="inf-bar-f" style="width:64%;background:var(--teal)"></div></div>
-    <div class="inf-pct" style="color:var(--teal)">8.87%</div>
-  </div>
-  <div class="inf-row">
-    <div class="inf-rank">3</div>
-    <div class="inf-av" style="background:var(--purple-bg);color:var(--purple)">E</div>
-    <div class="inf-info"><div class="inf-name">ET بالعربي</div><div class="inf-handle">@ETbilArabi · X</div></div>
-    <div class="inf-bar-t"><div class="inf-bar-f" style="width:51%;background:var(--purple)"></div></div>
-    <div class="inf-pct" style="color:var(--purple)">7.05%</div>
-  </div>
-  <div class="inf-row">
-    <div class="inf-rank">4</div>
-    <div class="inf-av" style="background:var(--coral-bg);color:var(--coral)">س</div>
-    <div class="inf-info"><div class="inf-name">سيدتي</div><div class="inf-handle">@sayidaty · فيسبوك</div></div>
-    <div class="inf-bar-t"><div class="inf-bar-f" style="width:48%;background:var(--coral)"></div></div>
-    <div class="inf-pct" style="color:var(--coral)">6.63%</div>
-  </div>
-  <div class="inf-row">
-    <div class="inf-rank">5</div>
-    <div class="inf-av" style="background:rgba(136,136,136,.1);color:#888">H</div>
-    <div class="inf-info"><div class="inf-name">Hia Magazine</div><div class="inf-handle">@Hia.Magazine · فيسبوك</div></div>
-    <div class="inf-bar-t"><div class="inf-bar-f" style="width:37%;background:#888"></div></div>
-    <div class="inf-pct" style="color:#888">5.12%</div>
-  </div>
-  <div class="inf-row">
-    <div class="inf-rank">6</div>
-    <div class="inf-av" style="background:rgba(24,119,242,.12);color:#1877F2">ع</div>
-    <div class="inf-info"><div class="inf-name">التلفزيون العربي</div><div class="inf-handle">@AlarabyTV · 9.6M متابع · X</div></div>
-    <div class="inf-bar-t"><div class="inf-bar-f" style="width:30%;background:#1877F2"></div></div>
-    <div class="inf-pct" style="color:#1877F2">4.19%</div>
-  </div>
-  <div class="inf-row">
-    <div class="inf-rank">7</div>
-    <div class="inf-av" style="background:rgba(136,136,136,.1);color:#888">G</div>
-    <div class="inf-info"><div class="inf-name">Grok</div><div class="inf-handle">@grok · 8.7M متابع · X</div></div>
-    <div class="inf-bar-t"><div class="inf-bar-f" style="width:27%;background:#888"></div></div>
-    <div class="inf-pct" style="color:#888">3.78%</div>
-  </div>
-  <div class="inf-row">
-    <div class="inf-rank">8</div>
-    <div class="inf-av" style="background:rgba(136,136,136,.1);color:#888">ص</div>
-    <div class="inf-info"><div class="inf-name">صباح الخير يا عرب</div><div class="inf-handle">@sayashow · فيسبوك</div></div>
-    <div class="inf-bar-t"><div class="inf-bar-f" style="width:25%;background:#888"></div></div>
-    <div class="inf-pct" style="color:#888">3.44%</div>
+    <div class="bm"><div class="bm-top"><span>العربية</span><b>91.6% — 1,668</b></div><div class="bm-track"><div class="bm-fill" style="width:0%" data-w="100%" data-c="#C9A84C"></div></div></div>
+    <div class="bm"><div class="bm-top"><span>الإنجليزية</span><b>3.84% — 70</b></div><div class="bm-track"><div class="bm-fill" style="width:0%" data-w="4.2%" data-c="#1D9E75"></div></div></div>
+    <div class="bm"><div class="bm-top"><span>الفارسية</span><b>2.8% — 51</b></div><div class="bm-track"><div class="bm-fill" style="width:0%" data-w="3.1%" data-c="#7B5EA7"></div></div></div>
+    <div class="bm"><div class="bm-top"><span>الأردية</span><b>0.49% — 9</b></div><div class="bm-track"><div class="bm-fill" style="width:0%" data-w="0.6%" data-c="#D85A30"></div></div></div>
   </div>
 </div>
 
-<div class="section-title">أبرز المواقع بعدد الزيارات</div>
-<div class="card">
-  <div class="bar-row"><div class="bar-lbl">snapchat.com</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--gold)"></div></div><div class="bar-val"><b>197.4M</b> زيارة</div></div>
-  <div class="bar-row"><div class="bar-lbl">masrawy.com</div><div class="bar-track"><div class="bar-fill" style="width:7.6%;background:var(--teal)"></div></div><div class="bar-val"><b>14.9M</b> زيارة</div></div>
-  <div class="bar-row"><div class="bar-lbl">almasryalyoum.com</div><div class="bar-track"><div class="bar-fill" style="width:7%;background:var(--teal)"></div></div><div class="bar-val"><b>13.8M</b> زيارة</div></div>
-  <div class="bar-row"><div class="bar-lbl">sabq.org</div><div class="bar-track"><div class="bar-fill" style="width:6.8%;background:var(--purple)"></div></div><div class="bar-val"><b>13.5M</b> زيارة</div></div>
-  <div class="bar-row"><div class="bar-lbl">al-marsd.com</div><div class="bar-track"><div class="bar-fill" style="width:3.8%;background:#888"></div></div><div class="bar-val"><b>7.4M</b> زيارة</div></div>
-</div>
-```
+<!-- المؤثرون -->
 
+<div class="sec" id="sec-influencers">
+  <div class="slabel">أبرز المؤثرين بحصة الصوت</div>
+  <div class="card">
+    <div class="inf-row"><div class="inf-rank">1</div><div class="inf-av" style="background:var(--gold-bg);color:var(--gold)">M</div><div class="inf-info"><div class="inf-name">MBC1</div><div class="inf-handle">@mbc1tv · X + فيسبوك</div></div><div class="inf-bar-t"><div class="inf-bar-f" style="width:0%;background:var(--gold)" data-w="100%"></div></div><div class="inf-pct" style="color:var(--gold)">13.78%</div></div>
+    <div class="inf-row"><div class="inf-rank">2</div><div class="inf-av" style="background:var(--teal-bg);color:var(--teal)">ت</div><div class="inf-info"><div class="inf-name">تركي آل الشيخ</div><div class="inf-handle">@turki · X + فيسبوك</div></div><div class="inf-bar-t"><div class="inf-bar-f" style="width:0%;background:var(--teal)" data-w="64%"></div></div><div class="inf-pct" style="color:var(--teal)">8.87%</div></div>
+    <div class="inf-row"><div class="inf-rank">3</div><div class="inf-av" style="background:var(--purple-bg);color:var(--purple)">E</div><div class="inf-info"><div class="inf-name">ET بالعربي</div><div class="inf-handle">@ETbilArabi · X</div></div><div class="inf-bar-t"><div class="inf-bar-f" style="width:0%;background:var(--purple)" data-w="51%"></div></div><div class="inf-pct" style="color:var(--purple)">7.05%</div></div>
+    <div class="inf-row"><div class="inf-rank">4</div><div class="inf-av" style="background:var(--coral-bg);color:var(--coral)">س</div><div class="inf-info"><div class="inf-name">سيدتي</div><div class="inf-handle">@sayidaty · فيسبوك</div></div><div class="inf-bar-t"><div class="inf-bar-f" style="width:0%;background:var(--coral)" data-w="48%"></div></div><div class="inf-pct" style="color:var(--coral)">6.63%</div></div>
+    <div class="inf-row"><div class="inf-rank">5</div><div class="inf-av" style="background:rgba(136,136,136,.1);color:#888">H</div><div class="inf-info"><div class="inf-name">Hia Magazine</div><div class="inf-handle">@Hia.Magazine · فيسبوك</div></div><div class="inf-bar-t"><div class="inf-bar-f" style="width:0%;background:#888" data-w="37%"></div></div><div class="inf-pct" style="color:#888">5.12%</div></div>
+    <div class="inf-row"><div class="inf-rank">6</div><div class="inf-av" style="background:rgba(24,119,242,.12);color:#1877F2">ع</div><div class="inf-info"><div class="inf-name">التلفزيون العربي</div><div class="inf-handle">@AlarabyTV · 9.6M متابع</div></div><div class="inf-bar-t"><div class="inf-bar-f" style="width:0%;background:#1877F2" data-w="30%"></div></div><div class="inf-pct" style="color:#1877F2">4.19%</div></div>
   </div>
 
-  <!-- ══ TURKI ══ -->
-
-  <div id="tab-turki" class="tab-panel">
-    <div class="section-title">تأثير تركي آل الشيخ — تحليل معمّق</div>
-
-```
-<div class="quote-box">
-  "كل التوفيق لابني المخرج السعودي المبدع <strong>محمد الملا</strong> في اول عمل سينمائي كبير له مع فريقه المبدع والكاست السعوديين الرائعين"
-  <div class="quote-meta">21 أبريل 2026 — نُشر على X وفيسبوك — 4 منشورات في 5 دقائق</div>
-</div>
-
-<div class="section-title">أداء منشورات X — 7,354,746 متابع</div>
-<div class="stat-grid">
-  <div class="stat-cell"><div class="stat-n">3.2M</div><div class="stat-l">إحصاءات — تغريدة 1</div></div>
-  <div class="stat-cell"><div class="stat-n">1.93M</div><div class="stat-l">وصول — تغريدة 1</div></div>
-  <div class="stat-cell"><div class="stat-n">2,558</div><div class="stat-l">لايك — تغريدة 1</div></div>
-  <div class="stat-cell"><div class="stat-n">200</div><div class="stat-l">ريتويت — تغريدة 1</div></div>
-</div>
-<div class="stat-grid" style="margin-bottom:20px">
-  <div class="stat-cell"><div class="stat-n">618K</div><div class="stat-l">إحصاءات — تغريدة 2</div></div>
-  <div class="stat-cell"><div class="stat-n">1.37M</div><div class="stat-l">وصول — تغريدة 2</div></div>
-  <div class="stat-cell"><div class="stat-n">1,743</div><div class="stat-l">لايك — تغريدة 2</div></div>
-  <div class="stat-cell"><div class="stat-n">222</div><div class="stat-l">ريتويت — تغريدة 2</div></div>
-</div>
-
-<div class="note" style="margin-bottom:20px">
-  فيسبوك: 20.3M متابع — 36,000 وصول إجمالي — 89 تعليق — 265 ردود. تفاعل أضعف بكثير رغم القاعدة الأكبر، مما يؤكد أن جمهور الفيلم يتحرك على X لا فيسبوك.
-</div>
-
-<div class="g2">
-  <div class="card" style="background:rgba(29,158,117,0.05);border-color:rgba(29,158,117,0.2)">
-    <div style="font-size:13px;font-weight:500;color:var(--teal);margin-bottom:10px">ماذا تعني هذي المنشورات</div>
-    <div style="font-size:13px;color:var(--text2);line-height:1.8">
-      تركي آل الشيخ بـ7.3M متابع وصف محمد الملا بـ"المبدع" و"ابني" — وهذا ختم رسمي وعاطفي من أعلى سلطة ترفيهية في السعودية. التغريدة الأولى وحدها حققت أكثر من 3.2M قراءة.
-    </div>
-  </div>
-  <div class="card" style="background:rgba(201,168,76,0.05);border-color:rgba(201,168,76,0.2)">
-    <div style="font-size:13px;font-weight:500;color:var(--gold);margin-bottom:10px">الكلمة الأهم تسويقياً</div>
-    <div style="font-size:32px;font-weight:600;color:var(--gold);text-align:center;padding:16px 0">"ابني"</div>
-    <div style="font-size:12px;color:var(--text2);line-height:1.7">يجب دمج هذه الكلمة في كل المحتوى التسويقي وبيانات الصحافة وعروض الرعاة — لأنها كلمة تركي نفسه وتربط الفيلم بالهيئة العامة للترفيه رسمياً.</div>
-  </div>
-</div>
-```
-
+  <div class="slabel">أبرز المواقع بعدد الزيارات</div>
+  <div class="card">
+    <div class="bm"><div class="bm-top"><span>snapchat.com</span><b>197.4M زيارة</b></div><div class="bm-track"><div class="bm-fill" style="width:0%" data-w="100%" data-c="#C9A84C"></div></div></div>
+    <div class="bm"><div class="bm-top"><span>masrawy.com</span><b>14.9M زيارة</b></div><div class="bm-track"><div class="bm-fill" style="width:0%" data-w="7.6%" data-c="#1D9E75"></div></div></div>
+    <div class="bm"><div class="bm-top"><span>sabq.org</span><b>13.5M زيارة</b></div><div class="bm-track"><div class="bm-fill" style="width:0%" data-w="6.8%" data-c="#7B5EA7"></div></div></div>
   </div>
 
-  <!-- ══ STRATEGY ══ -->
+  <div class="slabel">تركي آل الشيخ — تحليل معمّق</div>
+  <div class="quote-box">
+    "كل التوفيق لابني المخرج السعودي المبدع <strong>محمد الملا</strong> في اول عمل سينمائي كبير له مع فريقه المبدع والكاست السعوديين الرائعين"
+    <div class="quote-meta">21 أبريل 2026 — X وفيسبوك — 4 منشورات في 5 دقائق</div>
+  </div>
+  <div class="stat-grid">
+    <div class="stat-cell"><div class="stat-n">3.2M</div><div class="stat-l">قراءة — تغريدة 1</div></div>
+    <div class="stat-cell"><div class="stat-n">1.93M</div><div class="stat-l">وصول — تغريدة 1</div></div>
+    <div class="stat-cell"><div class="stat-n">2,558</div><div class="stat-l">لايك — تغريدة 1</div></div>
+    <div class="stat-cell"><div class="stat-n">200</div><div class="stat-l">ريتويت</div></div>
+  </div>
+  <div class="card" style="background:rgba(201,168,76,0.05);border-color:rgba(201,168,76,0.2);text-align:center">
+    <div style="font-size:12px;color:var(--text2);margin-bottom:8px">الكلمة الأهم تسويقياً</div>
+    <div style="font-size:36px;font-weight:700;color:var(--gold);padding:10px 0">"ابني"</div>
+    <div style="font-size:11px;color:var(--text2);line-height:1.7">يجب دمجها في كل المحتوى التسويقي وبيانات الصحافة وعروض الرعاة</div>
+  </div>
+</div>
 
-  <div id="tab-strategy" class="tab-panel">
-    <div class="section-title">التوصيات الاستراتيجية</div>
+<!-- التوصيات -->
 
-```
-<div class="rec-grid">
+<div class="sec" id="sec-strategy">
+  <div class="slabel">التوصيات الاستراتيجية</div>
+
   <div class="rec-card">
     <div class="rec-accent" style="background:var(--coral)"></div>
     <div class="rec-num" style="color:var(--coral)">01</div>
     <div class="rec-title">إنستغرام — الفرصة الكبرى</div>
-    <div class="rec-body">7.5% فقط من الإشارات رغم كونه المنصة البصرية الأولى. ارفعي كواليس المخرج، لقطات حصرية من الكاميرا، محتوى خلف الكواليس فوراً ودون تأخير.</div>
+    <div class="rec-body">7.5% فقط من الإشارات. ارفعي كواليس المخرج، لقطات حصرية، محتوى خلف الكواليس فوراً ودون تأخير.</div>
   </div>
   <div class="rec-card">
     <div class="rec-accent" style="background:var(--teal)"></div>
     <div class="rec-num" style="color:var(--teal)">02</div>
     <div class="rec-title">وظّفي كلمة "ابني" من تركي</div>
-    <div class="rec-body">ختم رسمي وعاطفي من أعلى سلطة ترفيهية. ادمجيها في كل المحتوى التسويقي وبيانات الصحافة وعروض الرعاة — لأنها كلمة تركي نفسه.</div>
+    <div class="rec-body">ختم رسمي وعاطفي من أعلى سلطة ترفيهية. ادمجيها في كل المحتوى التسويقي وبيانات الصحافة وعروض الرعاة.</div>
   </div>
   <div class="rec-card">
     <div class="rec-accent" style="background:var(--gold)"></div>
     <div class="rec-num" style="color:var(--gold)">03</div>
     <div class="rec-title">X أولاً — الأربعاء 4م موعدك</div>
-    <div class="rec-body">66% من الحوار على X. أفضل وقت للنشر ثبت عملياً هو الأربعاء الساعة 4 مساءً. احجزي هذا الموعد لكل إعلان رئيسي: تريلر، موعد عرض، نجم جديد.</div>
+    <div class="rec-body">66% من الحوار على X. احجزي هذا الموعد لكل إعلان رئيسي: تريلر، موعد عرض، نجم جديد.</div>
   </div>
   <div class="rec-card">
     <div class="rec-accent" style="background:var(--purple)"></div>
     <div class="rec-num" style="color:var(--purple)">04</div>
     <div class="rec-title">وسّعي الاهتمام الخليجي</div>
-    <div class="rec-body">مصر (49) والإمارات (28) والعراق (25) يُظهرون اهتماماً حقيقياً. استهدفي إعلاميين مصريين وإماراتيين قبيل الإصدار لتضخيم الوصول العربي.</div>
+    <div class="rec-body">مصر (49) والإمارات (28) والعراق (25) يُظهرون اهتماماً حقيقياً. استهدفي إعلاميين مصريين وإماراتيين قبيل الإصدار.</div>
+  </div>
+
+  <div class="closing">
+    <div class="closing-n">226.4M</div>
+    <div class="closing-s">وصول تراكمي — والفيلم لم يُعرض بعد</div>
+    <div class="closing-d">الفيلم يبدأ حياته الرقمية بقوة استثنائية.<br>القاعدة موجودة — المهمة: تحويل الفضول إلى تذاكر.</div>
+    <div class="closing-t"># عوو</div>
   </div>
 </div>
 
-<div class="closing">
-  <div class="closing-n">226.4M</div>
-  <div class="closing-s">وصول تراكمي — والفيلم لم يُعرض بعد</div>
-  <div class="closing-d">الفيلم يبدأ حياته الرقمية بقوة استثنائية.<br>القاعدة موجودة — المهمة: تحويل الفضول إلى تذاكر.</div>
-  <div class="closing-t"># عوو</div>
 </div>
-```
 
-  </div>
+<!-- BOTTOM NAV -->
 
+<div class="bnav">
+  <div class="bi active" onclick="switchTab('overview',this)"><div class="bicon">◆</div><div class="blabel">عامة</div></div>
+  <div class="bi" onclick="switchTab('platforms',this)"><div class="bicon">▦</div><div class="blabel">المنصات</div></div>
+  <div class="bi" onclick="switchTab('sentiment',this)"><div class="bicon">◉</div><div class="blabel">المشاعر</div></div>
+  <div class="bi" onclick="switchTab('geo',this)"><div class="bicon">◈</div><div class="blabel">الجغرافيا</div></div>
+  <div class="bi" onclick="switchTab('influencers',this)"><div class="bicon">★</div><div class="blabel">مؤثرون</div></div>
+  <div class="bi" onclick="switchTab('strategy',this)"><div class="bicon">→</div><div class="blabel">توصيات</div></div>
 </div>
 
 <script>
-function switchTab(name) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  event.currentTarget.classList.add('active');
-  animateBars();
-  animateCounters();
-}
-
-function animateBars() {
-  const fills = document.querySelectorAll('.tab-panel.active .bar-fill, .tab-panel.active .sent-bar-f, .tab-panel.active .inf-bar-f, .tab-panel.active .co-bar-f');
-  fills.forEach(el => {
-    const w = el.style.width;
-    el.style.width = '0';
-    requestAnimationFrame(() => { setTimeout(() => { el.style.width = w; }, 50); });
+function animateFills(){
+  document.querySelectorAll('.sec.active [data-w]').forEach(el=>{
+    const w=el.dataset.w, c=el.dataset.c;
+    el.style.width='0%';
+    if(c) el.style.background=c;
+    requestAnimationFrame(()=>setTimeout(()=>{el.style.width=w},60));
   });
 }
 
-function animateCounters() {
-  document.querySelectorAll('.tab-panel.active .count-up').forEach(el => {
-    const target = parseInt(el.dataset.target);
-    const fmt = el.dataset.format;
-    let start = 0;
-    const duration = 1000;
-    const step = target / (duration / 16);
-    const timer = setInterval(() => {
-      start = Math.min(start + step, target);
-      el.textContent = fmt === 'comma' ? Math.round(start).toLocaleString('en') : Math.round(start);
-      if (start >= target) clearInterval(timer);
-    }, 16);
-  });
+function switchTab(name,el){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.bi').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+name).classList.add('active');
+  if(el) el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  animateFills();
 }
 
-window.addEventListener('load', () => { animateBars(); animateCounters(); });
+window.addEventListener('load',animateFills);
 </script>
 
 </body>
